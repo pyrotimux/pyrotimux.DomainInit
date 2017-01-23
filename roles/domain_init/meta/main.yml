@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Phyo Shwe
+  description: Installs and Initialize Domain
+  company:
+  license: BSD
+  min_ansible_version: 2.0
+  github_branch: master
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+  galaxy_tags:
+  - Domain, Windows

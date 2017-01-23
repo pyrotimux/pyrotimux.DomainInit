@@ -1,0 +1,66 @@
+---
+  - name: Make sure the LCM refresh mode is disabled
+    win_lcm5:
+      refresh_mode: "Disabled"
+    tags:
+      - Config
+
+  - name: Download xActiveDirectory
+    win_oneget:
+      name: "xActiveDirectory"
+    tags:
+      - Oneget
+
+  - name: Download xNetworking
+    win_oneget:
+      name: "xNetworking"
+    tags:
+      - Oneget
+
+  - name: Install ADDS and RSAT
+    win_feature:
+      name: "AD-Domain-Services,RSAT-AD-Tools"
+    tags:
+      - WindowsFeature
+
+  - name: Init Domain
+    win_ad_xaddomain:
+      DomainName: "{{ ps_domainname }}"
+      DomainNetbiosName: "{{ ps_domainnetbios }}"
+      DomainAdministratorCredential_username: "{{ ps_domainadmin_user }}"
+      DomainAdministratorCredential_password: "{{ ps_domainadmin_pass }}"
+      SafemodeAdministratorPassword_username: "{{ ps_safemodeadmin_user }}"
+      SafemodeAdministratorPassword_password: "{{ ps_safemodeadmin_pass }}"
+    tags:
+      - DomainInit
+    notify:
+      - Reboot Server
+
+  # wait for all the services to load before adding and promoting users.
+  - meta: flush_handlers
+  - name: Pause for a min
+    pause:
+      minutes: 1
+
+  - name: Add Users
+    win_ad_xaduser:
+      DomainName: "{{ ps_domainname }}"
+      UserName: "{{ item.name }}"
+      Password_username: "{{ item.name }}"
+      Password_password: "{{ item.pass }}"
+    with_items: "{{ ps_users }}"
+    tags:
+      - AddUsers
+
+  - name: Promote Users
+    win_ad_xadgroup:
+      GroupName: "Domain Admins"
+      MembersToInclude: "ichiban, niban"
+    tags:
+      - PromoteUsers
+
+  - name: Change DNS Address
+    win_pc_xdnsserveraddress:
+      Address: "8.8.8.8"
+      InterfaceAlias: "Ethernet 2"
+      AddressFamily: "IPv4"
