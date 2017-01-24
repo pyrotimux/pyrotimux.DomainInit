@@ -1,7 +1,7 @@
 ---
-  ps_domainname: "pyro.testrealm.local"
-  ps_domainnetbios: "pyro"
-  ps_domainadmin_user: "pyro"
-  ps_domainadmin_pass: "V@gran7"
-  ps_safemodeadmin_user: "safepyro"
-  ps_safemodeadmin_pass: "V@gran7"
+  domainname: "pyro.testrealm.local"
+  domainnetbios: "pyro"
+  domainadmin_user: "pyro"
+  domainadmin_pass: "V@gran7"
+  safemodeadmin_user: "safepyro"
+  safemodeadmin_pass: "V@gran7"

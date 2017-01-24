@@ -25,12 +25,12 @@
 
   - name: Init Domain
     win_ad_xaddomain:
-      DomainName: "{{ ps_domainname }}"
-      DomainNetbiosName: "{{ ps_domainnetbios }}"
-      DomainAdministratorCredential_username: "{{ ps_domainadmin_user }}"
-      DomainAdministratorCredential_password: "{{ ps_domainadmin_pass }}"
-      SafemodeAdministratorPassword_username: "{{ ps_safemodeadmin_user }}"
-      SafemodeAdministratorPassword_password: "{{ ps_safemodeadmin_pass }}"
+      DomainName: "{{ domainname }}"
+      DomainNetbiosName: "{{ domainnetbios }}"
+      DomainAdministratorCredential_username: "{{ domainadmin_user }}"
+      DomainAdministratorCredential_password: "{{ domainadmin_pass }}"
+      SafemodeAdministratorPassword_username: "{{ safemodeadmin_user }}"
+      SafemodeAdministratorPassword_password: "{{ safemodeadmin_pass }}"
     tags:
       - DomainInit
     notify:
@@ -44,11 +44,11 @@
 
   - name: Add Users
     win_ad_xaduser:
-      DomainName: "{{ ps_domainname }}"
+      DomainName: "{{ domainname }}"
       UserName: "{{ item.name }}"
       Password_username: "{{ item.name }}"
       Password_password: "{{ item.pass }}"
-    with_items: "{{ ps_users }}"
+    with_items: "{{ users }}"
     tags:
       - AddUsers
 
