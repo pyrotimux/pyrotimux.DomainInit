@@ -2,13 +2,14 @@
 galaxy_info:
   author: Pyro
   description: Initialize and populate window domain.
-  company:
+  company: None
   license: MIT
   min_ansible_version: '2.1.1'
   github_branch: master
   platforms:
   - name: Windows
     versions:
-    - Windows Server 2012
-  galaxy_tags:
-  - Domain, Windows
+      - all
+      - 2012R2
+  categories:
+  - system
