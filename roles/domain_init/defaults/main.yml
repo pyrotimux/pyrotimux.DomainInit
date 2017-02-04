@@ -1,7 +1,0 @@
----
-  domainname: "pyro.testrealm.local"
-  domainnetbios: "pyro"
-  domainadmin_user: "pyro"
-  domainadmin_pass: "V@gran7"
-  safemodeadmin_user: "safepyro"
-  safemodeadmin_pass: "V@gran7"

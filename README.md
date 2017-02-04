@@ -13,13 +13,16 @@ Role Variables
 Please pass in the variable below. Example is shown below.
 ```
 # users to be populated in domain.
-users: 
+users:
   - { name: 'ichiban', pass: 'ichiV@gran7' }
   - { name: 'niban', pass: 'niV@gran7' }
   - { name: 'sanban', pass: 'sanV@gran7'}
   - { name: 'yonban', pass: 'yonV@gran7'}
+  
+# admins to be promoted
+admins: "ichiban, niban"
 
-domainname: "pyro.testrealm.local" 
+domainname: "pyro.testrealm.local"
 domainnetbios: "pyro"
 domainadmin_user: "pyro"
 domainadmin_pass: "V@gran7"

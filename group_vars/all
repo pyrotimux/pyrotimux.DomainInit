@@ -1,7 +1,0 @@
----
-  # may be we dynamically generate this files.
-  users:
-    - { name: 'ichiban', pass: 'ichiV@gran7' }
-    - { name: 'niban', pass: 'niV@gran7' }
-    - { name: 'sanban', pass: 'sanV@gran7'}
-    - { name: 'yonban', pass: 'yonV@gran7'}
