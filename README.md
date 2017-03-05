@@ -1,6 +1,6 @@
 DomainInit
 =========
-[![Build Status](https://travis-ci.org/pyrotimux/domain_init.png?branch=master)](https://travis-ci.org/pyrotimux/domain_init)
+[![Build Status](https://travis-ci.org/pyrotimux/pyrotimux.DomainInit.png?branch=master)](https://travis-ci.org/pyrotimux/pyrotimux.DomainInit)
 
 Initializing and populating windows domain.
 
