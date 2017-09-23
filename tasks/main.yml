@@ -24,7 +24,8 @@
       - WindowsFeature
 
   - name: Init Domain
-    win_ad_xaddomain:
+    win_dsc:
+      resource_name: xADDomain
       DomainName: "{{ domainname }}"
       DomainNetbiosName: "{{ domainnetbios }}"
       DomainAdministratorCredential_username: "{{ domainadmin_user }}"
@@ -41,26 +42,3 @@
   - name: Pause for a min
     pause:
       minutes: 1
-
-  - name: Add Users
-    win_ad_xaduser:
-      DomainName: "{{ domainname }}"
-      UserName: "{{ item.name }}"
-      Password_username: "{{ item.name }}"
-      Password_password: "{{ item.pass }}"
-    with_items: "{{ users }}"
-    tags:
-      - AddUsers
-
-  - name: Promote Users
-    win_ad_xadgroup:
-      GroupName: "Domain Admins"
-      MembersToInclude: "{{ admins}}"
-    tags:
-      - PromoteUsers
-
-  # - name: Change DNS Address
-  #   win_pc_xdnsserveraddress:
-  #     Address: "8.8.8.8"
-  #     InterfaceAlias: "Ethernet 2"
-  #     AddressFamily: "IPv4"
