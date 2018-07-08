@@ -23,7 +23,9 @@
 Set-StrictMode -Off
 
 $params = Parse-Args $args;
-$result = New-Object psobject;
+$result = @{
+	changed = $false
+}
 Set-Attr $result "changed" $false;
 
 $Name = Get-Attr -obj $params -name name -failifempty $true -resultobj $result
